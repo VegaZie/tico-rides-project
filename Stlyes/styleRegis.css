@@ -1,0 +1,21 @@
+head {
+    text-align: center;
+}
+
+body{
+    background-color: darkorange;
+    text-align: center;
+}
+
+
+p{
+    font-style: arial;
+  }
+
+.btn {
+    background-color: rgb(20, 69, 73); 
+    color: rgb(255, 254, 254); 
+    border: 1px solid #008CBA;
+    border-radius: 25% 25% ;
+    }
+  

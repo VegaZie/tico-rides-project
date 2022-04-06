@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, Helvetica;
+    background-color: darkorange;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    background: hsl(0, 0%, 0%);
+    width: 90%;
+    max-width: 338px;
+    margin: auto;
+}
+
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    display: block;
+}
+
+.menu li {
+    display: inline-block;
+    text-align: center;
+}
+
+.menu li a:hover {
+    background: #ef8354;
+}
+
+textarea {
+    width: 600px;
+    height: 80px;
+    border: 2px solid #030303;
+}
+
+#diviz{
+    float: left;
+    height:130px;
+    padding:20px;
+    width:400px;
+}
+
+#divD{
+    float: left;
+    height:130px;
+    padding:20px;
+    width:180px;
+}
+
+#btn1{
+    float: left;
+}
+#a1{
+    float: left;
+    height:130px;
+    width:180px;
+}
+
+#divus{
+    float: right;
+    width: 300px; 
+    display: flex;
+}
+
+.imgUsu {    
+	width: 30px;
+	height: 20px;
+	float: right;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+
+.h3c{
+      padding-right: 20px;
+  }
+
+#divRuta{
+    text-align: center;
+}
