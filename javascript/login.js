@@ -6,7 +6,7 @@ function login() {
     let password = document.getElementById('passworduser').value;
 
     if (email === emailprueba && password === passPrueba){
-        window.open('dashboard.html')
+        window.location = "dashboard.html";
     }else {
         window.alert("El usuario no existe");
     }
