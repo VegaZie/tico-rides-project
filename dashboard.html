@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="Stlyes/styleDash.css">
-        <title>Dashboard</title>
-        <center>
-            <img src="Images/logo.png">
-        </center>
-    </head>
-    <body onload="cargarusuario()">
-        <ul class="menu">
-            <li>
-                <a href="">Tablero</a>
-            </li>
-            <li>
-                <a href="verRide.html">Rides</a>
-            </li>
-            <li>
-                <a href="settings.html">Configuraciones</a>
-            </li>
-        </ul>
 
-        <div id="divRuta">
-            <p><a href="dashboard.html">Tablero</a> &gt; </p>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="Stlyes/styleDash.css">
+    <title>Dashboard</title>
+    <center>
+        <img src="Images/logo.png">
+    </center>
 
-        <div id="divD">
-            <h3 class="h3c">Bienvenido</h3> 
-            <h3 id="userDash">Usuario Logeado</h3>
-            <img class="imgUsu" src="Images/user.png">
-        </div>
+</head>
 
-        <br>
-        <br>
-        <br>
-        <center>
-            <fieldset>
-                <legend>My rides</legend>
+<body onload="cargarusuario()">
+    <ul class="menu">
+        <li>
+            <a href="">Tablero</a>
+        </li>
+        <li>
+            <a href="verRide.html">Rides</a>
+        </li>
+        <li>
+            <a href="settings.html">Configuraciones</a>
+        </li>
+    </ul>
+
+    <div id="divRuta">
+        <p><a href="dashboard.html">Tablero</a> &gt; </p>
+    </div>
+    <p align="right"><button onclick="singout()" class="cerrar">Cerrar sesión</button></p>
+
+    <div id="divD">
+        <h3 class="h3c">Bienvenido</h3>
+        <h3 id="userDash">Usuario Logeado</h3>
+        <img class="imgUsu" src="Images/user.png">
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <center>
+        <fieldset>
+            <legend>My rides</legend>
+            <table>
+                <p align="right">
+                    <a href="addRide.html"><input type="button" value="+"></a>
+                </p>
                 <table>
-                    <p align="right">
-                        <a href="addRide.html"><input type="button" value="+"></a>
-                    </p>
-                    <table>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Inicio</th>
-                            <th>Final</th>
-                            <th>Acciones</th>
-                        </tr>
-                        <tr>
-                            <td>Brete</td>
-                            <td>Valle Azul</td>
-                            <td>Ciudad Quesada</td>
-                            <td>
-                                <a href="">
-                                    <a href="edit.html"><input type="button" value="Editar"></a>
-                                </a>
-                                |
-                                <a href="">
-                                    <input type="button" value="Eliminar">
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                    <p align="right">
-                        <a href="addRide.html"><input type="button" value="+"></a>
-                    </p>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Inicio</th>
+                        <th>Final</th>
+                        <th>Acciones</th>
+                    </tr>
+                    <tr>
+                        <td>Brete</td>
+                        <td>Valle Azul</td>
+                        <td>Ciudad Quesada</td>
+                        <td>
+                            <a href="">
+                                <a href="edit.html"><input type="button" value="Editar"></a>
+                            </a>
+                            |
+                            <a href="">
+                                <input type="button" value="Eliminar">
+                            </a>
+                        </td>
+                    </tr>
                 </table>
-            </fieldset>
-        </center>
-    </body>
-    <script>
-        function cargarusuario(){
-            document.getElementById('userDash').innerHTML = sessionStorage.getItem("user");
-        };
-    </script>
+                <p align="right">
+                    <a href="addRide.html"><input type="button" value="+"></a>
+                </p>
+            </table>
+        </fieldset>
+    </center>
+    <script src="javascript/dash.js"></script>
+</body>
 </html>
