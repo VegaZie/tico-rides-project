@@ -2,12 +2,19 @@ const emailprueba = "david";
 const passPrueba = "1234";
 
 function login() {
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('passworduser').value;
+    const usernameL = document.getElementById('email').value;
+    const passwordL = document.getElementById('passworduser').value;
+    const userRegister = JSON.parse(localStorage.getItem('usersRegistred'));
 
-    if (email === emailprueba && password === passPrueba){
-        window.location = "dashboard.html";
+    if (userRegister){
+        let userLog = userRegister.find(user => user.username === usernameL && user.password === passwordL);
+        if(userLog){
+            window.location = "dashboard.html";
+        }else{
+            window.alert("El usuario no existe");
+        }
+        
     }else {
-        window.alert("El usuario no existe");
+        window.alert("No existen usuarios registrados");
     }
 };

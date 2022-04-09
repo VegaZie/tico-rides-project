@@ -5,7 +5,6 @@ function registration(){
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const repPassword = document.getElementById('passwordrepeat').value;
-    let userRegister = JSON.parse(localStorage.getItem('usersRegistred'));
 
     if(name.length === 0 || lastname.length === 0 || phone.length === 0 || username === 0 || password.length === 0){
         window.alert('¡Se detectaron campos vacios, por favor llene todos los campos!');
