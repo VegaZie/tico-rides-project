@@ -10,7 +10,7 @@
             <img src="Images/logo.png">
         </center>
     </head>
-    <body>
+    <body onload="cargarusuario()">
         <ul class="menu">
             <li>
                 <a href="">Tablero</a>
@@ -29,7 +29,7 @@
 
         <div id="divD">
             <h3 class="h3c">Bienvenido</h3> 
-            <h4>Usuario</h4>
+            <h3 id="userDash">Usuario Logeado</h3>
             <img class="imgUsu" src="Images/user.png">
         </div>
 
@@ -72,4 +72,9 @@
             </fieldset>
         </center>
     </body>
+    <script>
+        function cargarusuario(){
+            document.getElementById('userDash').innerHTML = sessionStorage.getItem("user");
+        };
+    </script>
 </html>

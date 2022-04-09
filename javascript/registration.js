@@ -9,7 +9,7 @@ function registration(){
     if(name.length === 0 || lastname.length === 0 || phone.length === 0 || username === 0 || password.length === 0){
         window.alert('¡Se detectaron campos vacios, por favor llene todos los campos!');
     }else{
-        if(validarUserName(username)){
+        if(!validarUserName(username)){
             if(password === repPassword){
                 let userRegister = JSON.parse(localStorage.getItem('usersRegistred'));
                 if (!userRegister) {
