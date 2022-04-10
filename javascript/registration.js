@@ -50,7 +50,3 @@ function validarUserName(usernamer){
         return false;
     }
 };
-
-function login(){
-
-};

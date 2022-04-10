@@ -37,21 +37,21 @@
     <p>
         Nombre del ride
         <br>
-        <input type="text" name="ridename" size="30" value="">
+        <input type="text" id="ridename" size="30" value="">
     </p>
     <br>
     <p>
         Inicia en:
         <br>
-        <input type="text" name="start" size="30" value="">
+        <input type="text" id="start" size="30" value="">
         <br>
         <br>
         Termina en:
         <br>
-        <input type="text" name="end" size="30" value="">
+        <input type="text" id="end" size="30" value="">
     </p>
     <p>Description</p>
-    <textarea type="text">Agregue una descripción</textarea>
+    <textarea id="description" type="text">Agregue una descripción</textarea>
     <p>______________________________________________________________________________________________________________________________________________________
     </p>
     <label>¿Cuándo?</label>
@@ -59,11 +59,11 @@
     <div id="diviz">
         <label>Salida</label>
         <br>
-        <input type="time" name="salida">
+        <input type="time" id="salida">
         <br>
         <label>Tiempo estimado de llegada</label>
         <br>
-        <input type="time" name="salida">
+        <input type="time" id="llegada">
     </div>
     <div id="divD">
         <label>Seleccione los días</label>
@@ -100,7 +100,8 @@
     <br>
     <br>
     <a id="a1" href="dashboard.html">Cancelar</a>
-    <input id="btn1" class="btn" type="button" value="Guardar">
+    <input id="btn1" class="btn" type="button" value="Guardar" onclick="addride()">
+    <script src="javascript/rides.js"></script>
 </body>
 
 </html>

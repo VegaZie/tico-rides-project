@@ -1,6 +1,6 @@
 function singout(){
     sessionStorage.removeItem("user");
-    window.location = "Authentication_Page.html";
+    window.location = "index.html";
 };
 
 function cargarusuario() {
