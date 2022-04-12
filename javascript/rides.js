@@ -22,7 +22,7 @@ function addride() {
             if (!ridesregis) {
                 ridesregis = [];
             }
-            if (!validarRideName(ridename)) {
+            if (!validarRideName(ridename, username)) {
                 const newride = {
                     ridename: ridename,
                     inicio: start,
@@ -53,10 +53,10 @@ function addride() {
     }
 };
 
-function validarRideName(Ridename) {
+function validarRideName(Ridename, user) {
     let rides = JSON.parse(localStorage.getItem('rides'));
     if (rides) {
-        let ridever = rides.find(ridename => ridename.ridename === Ridename);
+        let ridever = rides.find(ridename => ridename.ridename === Ridename && ridename.user === user);
 
         if (ridever) {
             return true;
@@ -67,6 +67,35 @@ function validarRideName(Ridename) {
         return false;
     }
 };
+
+function cargarRide(Ridename) {
+    const user = sessionStorage.getItem('user');
+    let rides = JSON.parse(localStorage.getItem('rides'));
+
+    if (rides) {
+        let rideEncontrado = rides.find(ridename => ridename.ridename === Ridename && ridename.user === user);
+
+        if (rideEncontrado) {
+            document.getElementById('ridename').value = rideEncontrado.ridename;
+            document.getElementById('start').value = rideEncontrado.inicio;
+            document.getElementById('end').value = rideEncontrado.fin;
+            document.getElementById('description').innerHTML = rideEncontrado.descripcion;
+            document.getElementById('horasalida').value = rideEncontrado.horasalida;
+            document.getElementById('horallegada').value = rideEncontrado.horallegada;
+
+            document.getElementById('Lune').checked = rideEncontrado.lunes;
+            document.getElementById('mart').checked = rideEncontrado.martes;
+            document.getElementById('Mier').checked = rideEncontrado.miercoles;
+            document.getElementById('Juev').checked = rideEncontrado.jueves;
+            document.getElementById('Vier').checked = rideEncontrado.viernes;
+            document.getElementById('Saba').checked = rideEncontrado.sabado;
+            document.getElementById('Domi').checked = rideEncontrado.domingo;
+
+        } else {
+            window.alert('No se encontro la información');
+        }
+    }
+}
 
 function editride() {
 

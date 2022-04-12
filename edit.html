@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="Stlyes/StyleEditAdd.css">
         <title>Editar</title>
     </head>
-    <body>
+    <body onload="cargarRide('Prueba')">
         <ul class="menu">
             <li>
                 <a href="dashboard.html">Tablero</a>
@@ -25,7 +25,7 @@
             <br>
             <input
                 type="text"
-                name="ridename"
+                id="ridename"
                 size="30"
                 value=""
             >
@@ -36,7 +36,7 @@
             <br>
             <input
                 type="text"
-                name="start"
+                id="start"
                 size="30"
                 value=""
             >
@@ -46,12 +46,12 @@
             <br>
             <input
                 type="text"
-                name="end"
+                id="end"
                 size="30"
                 value=""
             >
         </p>
-        <p>Description</p>
+        <p>Descripción</p>
         <textarea id="description" type="text" placeholder="Agregue una descripción"></textarea>
         <p>______________________________________________________________________________________________________________________________________________________</p>
         <label>¿Cuándo?</label>
@@ -59,11 +59,11 @@
         <div id="diviz">
             <label>Salida</label>
             <br>
-            <input type="time" name="salida">
+            <input type="time" id="horasalida">
             <br>
             <label>Tiempo estimado de llegada</label>
             <br>
-            <input type="time" name="salida">
+            <input type="time" id="horallegada">
         </div>
         <div id="divD">
             <label>Seleccione los días</label>
@@ -136,5 +136,6 @@
         <br>
         <a id="a1" href="dashboard.html">Cancelar</a>
         <input id="btn1" class="btn" type="button" value="Guardar">
+        <script src="javascript/rides.js"></script>
     </body>
 </html>
