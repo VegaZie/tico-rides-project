@@ -22,27 +22,52 @@ function addride() {
             if (!ridesregis) {
                 ridesregis = [];
             }
-            const newride = {
-                ridename: ridename,
-                inicio: start,
-                fin: end,
-                descripcion: description,
-                horasalida: timestart,
-                horallegada: timeend,
-                lunes: Lunes,
-                martes: Martes,
-                miercoles: Miercoles,
-                jueves: Jueves,
-                viernes: Viernes,
-                sabado: Sabado,
-                domingo: Domingo,
-                user: username
+            if (!validarRideName(ridename)) {
+                const newride = {
+                    ridename: ridename,
+                    inicio: start,
+                    fin: end,
+                    descripcion: description,
+                    horasalida: timestart,
+                    horallegada: timeend,
+                    lunes: Lunes,
+                    martes: Martes,
+                    miercoles: Miercoles,
+                    jueves: Jueves,
+                    viernes: Viernes,
+                    sabado: Sabado,
+                    domingo: Domingo,
+                    user: username
+                }
+                ridesregis.push(newride);
+                localStorage.setItem("rides", JSON.stringify(ridesregis));
+                window.location = "dashboard.html";
             }
-            ridesregis.push(newride);
-            localStorage.setItem("rides", JSON.stringify(ridesregis));
-            window.location = "dashboard.html";
+            else {
+                window.alert('El nombre del ride ya existe, por favor ingrese uno distinto');
+            }
+
         } else {
             window.alert('Debe seleccionar almenos un día');
         }
     }
 };
+
+function validarRideName(Ridename) {
+    let rides = JSON.parse(localStorage.getItem('rides'));
+    if (rides) {
+        let ridever = rides.find(ridename => ridename.ridename === Ridename);
+
+        if (ridever) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+};
+
+function editride() {
+
+}
