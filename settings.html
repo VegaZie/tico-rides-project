@@ -24,15 +24,17 @@
     <br>
     <h1>Configuraciones</h1>
     <p>Nombre completo</p>
-    <input type="text" name="fullname" size="20">
+    <input type="text" id="fullname" size="20">
     <br>
     <p>Velocidad media</p>
-    <input type="text" name="speed" size="20">
+    <input type="text" id="speed" size="20">
     <p>Sobre mí</p>
-    <textarea type="text">Escribe algo sobre tí</textarea>
+    <textarea type="text" id="about" placeholder="Escribe algo sobre tí"></textarea>
     <br>
     <a href="dashboard.html">Cancelar</a>
-    <input class="btn" type="button" value="Guardar" />
+    <input onclick="settings()" class="btn" type="button" value="Guardar" />
+
+    <script src="javascript/setting.js"></script>
 </body>
 
 </html>
