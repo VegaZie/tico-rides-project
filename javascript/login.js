@@ -12,7 +12,7 @@ function login() {
             sessionStorage.setItem("user", usernameL);
             window.location = "dashboard.html";
         }else{
-            window.alert("El usuario no existe");
+            window.alert("El usuario no existe o la contraseña es incorrecta");
         }
         
     }else {

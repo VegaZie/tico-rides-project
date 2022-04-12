@@ -10,24 +10,19 @@
     <center><img src="Images/logo.png" /></center>
 </head>
 
-<body>
+<body onload="cargarinfo()">
     <ul class="menu">
         <li><a href="dashboard.html">Tablero</a></li>
         <li><a href="verRide.html">Rides</a></li>
         <li><a href="">Configuraciones</a></li>
     </ul>
-    <div id="divD">
-        <h3 class="h3c">Bienvenido</h3> 
-        <h4>Usuario</h4>
-        <img class="imgUsu" src="Images/user.png">
-    </div>
     <br>
     <h1>Configuraciones</h1>
     <p>Nombre completo</p>
-    <input type="text" id="fullname" size="20">
+    <input type="text" id="fullname" size="20" placeholder="Tu nombre" value=""/>
     <br>
     <p>Velocidad media</p>
-    <input type="text" id="speed" size="20">
+    <input type="text" id="speed" size="20" placeholder="50km/h" value=""/>
     <p>Sobre mí</p>
     <textarea type="text" id="about" placeholder="Escribe algo sobre tí"></textarea>
     <br>
