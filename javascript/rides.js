@@ -91,7 +91,7 @@ function cargarRide() {
             document.getElementById('Vier').checked = rideEncontrado.viernes;
             document.getElementById('Saba').checked = rideEncontrado.sabado;
             document.getElementById('Domi').checked = rideEncontrado.domingo;
-            
+
         } else {
             window.alert('No se encontro la información');
         }
@@ -140,12 +140,15 @@ function cargarDashboard() {
                 });
 
                 deleteButton.addEventListener("click", (event) => {
-                    let rideRow = event.target.parentNode.parentNode;
+                    let resultado = window.confirm('¿Estas seguro que desea eliminar el ride?');
+                    if (resultado === true) {
+                        let rideRow = event.target.parentNode.parentNode;
 
-                    let ridemaTabla = rideRow.getAttribute("ridename");
-                    rideRow.remove();
+                        let ridemaTabla = rideRow.getAttribute("ridename");
+                        rideRow.remove();
 
-                    //Aqui va la funcion de eliminar
+                        deleteRide(ridemaTabla);
+                    }
 
                 });
             }
@@ -176,24 +179,48 @@ function editride() {
     let rides = JSON.parse(localStorage.getItem('rides'));
 
     let rideEncontrado = rides.find(element => element.ridename === ridenameEditar && element.user === user);
+    if (ridename.length === 0 || start.length === 0 || end.length === 0 || description.length === 0 || timestart.length === 0 || timeend.length === 0) {
+        window.alert('Hay campos vacios, por favor complete la información solicitada');
+    } else {
+        if (!validarRideName(ridename, user)) {
+            if (Lunes || Martes || Miercoles || Jueves || Viernes || Sabado || Domingo) {
+                if (rideEncontrado) {
+                    rideEncontrado.ridename = ridename;
+                    rideEncontrado.inicio = start;
+                    rideEncontrado.fin = end;
+                    rideEncontrado.descripcion = description;
+                    rideEncontrado.horasalida = timestart;
+                    rideEncontrado.horallegada = timeend;
+                    rideEncontrado.lunes = Lunes;
+                    rideEncontrado.martes = Martes;
+                    rideEncontrado.miercoles = Miercoles;
+                    rideEncontrado.jueves = Jueves;
+                    rideEncontrado.viernes = Viernes;
+                    rideEncontrado.sabado = Sabado;
+                    rideEncontrado.domingo = Domingo;
+                    localStorage.setItem("rides", JSON.stringify(rides));
+                    window.alert('La información se guardo con éxito');
+                    window.location = "dashboard.html";
+                }
+            } else {
+                window.alert('Debe seleccionar almenos un día');
+            }
 
-    if(rideEncontrado){
-        rideEncontrado.ridename = ridename;
-        rideEncontrado.inicio = start;
-        rideEncontrado.fin = end;
-        rideEncontrado.descripcion = description;
-        rideEncontrado.horasalida = timestart;
-        rideEncontrado.horallegada = timeend;
-        rideEncontrado.lunes = Lunes;
-        rideEncontrado.martes = Martes;
-        rideEncontrado.miercoles = Miercoles;
-        rideEncontrado.jueves = Jueves;
-        rideEncontrado.viernes = Viernes;
-        rideEncontrado.sabado = Sabado;
-        rideEncontrado.domingo = Domingo;
-        localStorage.setItem("rides", JSON.stringify(rides));
-        window.alert('La información se guardo con éxito');
-        window.location = "dashboard.html";
+        } else {
+            window.alert('El nombre del ride ya existe, por favor ingrese uno distinto');
+        }
     }
+}
+
+function deleteRide(RidenameDelete) {
+    let user = sessionStorage.getItem('user');
+    let rides = JSON.parse(localStorage.getItem('rides'));
+
+    let rideEncontrado = rides.findIndex(element => element.ridename === RidenameDelete && element.user === user);
+
+    rides.splice(rideEncontrado, 1);
+
+    localStorage.setItem("rides", JSON.stringify(rides));
+    window.alert('El ride se elimino con éxito');
 
 }
