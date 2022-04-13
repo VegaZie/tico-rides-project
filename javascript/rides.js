@@ -68,7 +68,8 @@ function validarRideName(Ridename, user) {
     }
 };
 
-function cargarRide(Ridename) {
+function cargarRide() {
+    let Ridename = localStorage.getItem('rideEdit');
     const user = sessionStorage.getItem('user');
     let rides = JSON.parse(localStorage.getItem('rides'));
 
@@ -90,13 +91,109 @@ function cargarRide(Ridename) {
             document.getElementById('Vier').checked = rideEncontrado.viernes;
             document.getElementById('Saba').checked = rideEncontrado.sabado;
             document.getElementById('Domi').checked = rideEncontrado.domingo;
-
+            
         } else {
             window.alert('No se encontro la información');
         }
     }
-}
+};
+
+function cargarDashboard() {
+    let ridesregis = JSON.parse(localStorage.getItem('rides'));
+    let user = sessionStorage.getItem('user');
+    if (!ridesregis) {
+        window.alert('No se encontro la información de los rides para mostar, por favor agregue un ride');
+    } else {
+        let tabladash = document.getElementById('dashboardinformation');
+
+        for (let i = 0; i < ridesregis.length; i++) {
+            if (ridesregis[i].user === user) {
+                let newRideRowRef = tabladash.insertRow(-1);
+
+                newRideRowRef.setAttribute("ridename", ridesregis[i].ridename);
+                let newCellRef = newRideRowRef.insertCell(0);
+                newCellRef.textContent = ridesregis[i].ridename;
+
+                newCellRef = newRideRowRef.insertCell(1);
+                newCellRef.textContent = ridesregis[i].inicio;
+
+                newCellRef = newRideRowRef.insertCell(2);
+                newCellRef.textContent = ridesregis[i].fin;
+
+                let newActionButton = newRideRowRef.insertCell(3);
+
+                let editButton = document.createElement("button");
+                editButton.textContent = 'Editar';
+
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = 'Eliminar';
+
+                newActionButton.appendChild(editButton);
+                newActionButton.appendChild(deleteButton);
+
+                editButton.addEventListener("click", (event) => {
+                    let rideRow = event.target.parentNode.parentNode;
+
+                    let ridemaTabla = rideRow.getAttribute("ridename");
+                    localStorage.setItem('rideEdit', ridemaTabla);
+                    window.location = "edit.html";
+                });
+
+                deleteButton.addEventListener("click", (event) => {
+                    let rideRow = event.target.parentNode.parentNode;
+
+                    let ridemaTabla = rideRow.getAttribute("ridename");
+                    rideRow.remove();
+
+                    //Aqui va la funcion de eliminar
+
+                });
+            }
+        }
+
+    }
+};
 
 function editride() {
+    const ridename = document.getElementById('ridename').value;
+    const start = document.getElementById('start').value;
+    const end = document.getElementById('end').value;
+    const description = document.getElementById('description').value;
+    const timestart = document.getElementById('horasalida').value;
+    const timeend = document.getElementById('horallegada').value;
+    let Lunes = document.getElementById('Lune').checked;
+    let Martes = document.getElementById('mart').checked;
+    let Miercoles = document.getElementById('Mier').checked;
+    let Jueves = document.getElementById('Juev').checked;
+    let Viernes = document.getElementById('Vier').checked;
+    let Sabado = document.getElementById('Saba').checked;
+    let Domingo = document.getElementById('Domi').checked;
+
+    let user = sessionStorage.getItem('user');
+
+    let ridenameEditar = localStorage.getItem('rideEdit');
+
+    let rides = JSON.parse(localStorage.getItem('rides'));
+
+    let rideEncontrado = rides.find(element => element.ridename === ridenameEditar && element.user === user);
+
+    if(rideEncontrado){
+        rideEncontrado.ridename = ridename;
+        rideEncontrado.inicio = start;
+        rideEncontrado.fin = end;
+        rideEncontrado.descripcion = description;
+        rideEncontrado.horasalida = timestart;
+        rideEncontrado.horallegada = timeend;
+        rideEncontrado.lunes = Lunes;
+        rideEncontrado.martes = Martes;
+        rideEncontrado.miercoles = Miercoles;
+        rideEncontrado.jueves = Jueves;
+        rideEncontrado.viernes = Viernes;
+        rideEncontrado.sabado = Sabado;
+        rideEncontrado.domingo = Domingo;
+        localStorage.setItem("rides", JSON.stringify(rides));
+        window.alert('La información se guardo con éxito');
+        window.location = "dashboard.html";
+    }
 
 }

@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload="cargarusuario()">
+<body onload="cargarusuario(), cargarDashboard()">
     <ul class="menu">
         <li>
             <a href="">Tablero</a>
@@ -47,27 +47,15 @@
                 <p align="right">
                     <a href="addRide.html"><input type="button" value="+"></a>
                 </p>
-                <table>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Inicio</th>
-                        <th>Final</th>
-                        <th>Acciones</th>
-                    </tr>
-                    <tr>
-                        <td>Brete</td>
-                        <td>Valle Azul</td>
-                        <td>Ciudad Quesada</td>
-                        <td>
-                            <a href="">
-                                <a href="edit.html"><input type="button" value="Editar"></a>
-                            </a>
-                            |
-                            <a href="">
-                                <input type="button" value="Eliminar">
-                            </a>
-                        </td>
-                    </tr>
+                <table id="dashboardinformation">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Inicio</th>
+                            <th>Final</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
                 </table>
                 <p align="right">
                     <a href="addRide.html"><input type="button" value="+"></a>
@@ -76,5 +64,7 @@
         </fieldset>
     </center>
     <script src="javascript/dash.js"></script>
+    <script src="javascript/rides.js"></script>
 </body>
+
 </html>
