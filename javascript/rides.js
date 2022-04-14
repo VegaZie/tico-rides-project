@@ -204,7 +204,7 @@ function editride() {
         window.alert('Hay campos vacios, por favor complete la información solicitada');
     } else {
         //Validamos el ridename
-        if (!validarRideName(ridename, user)) {
+        if (!validarRideNameEditar(ridename, user)) {
             //validamos que este seleccionado un checkbox
             if (Lunes || Martes || Miercoles || Jueves || Viernes || Sabado || Domingo) {
                 if (rideEncontrado) {
@@ -235,6 +235,32 @@ function editride() {
         }
     }
 }
+
+function validarRideNameEditar(Ridename, user) {
+    //acá recuperamos el ridename a editar
+    let RidenameLocal = localStorage.getItem('rideEdit');
+
+    let rides = JSON.parse(localStorage.getItem('rides'));
+    if (rides) {
+        //Aca usamos el find para verificar que el ridename no exista en ningún ride que este 
+        //asociado al mismo usuario que crea el ride
+        let ridever = rides.find(ridename => ridename.ridename === Ridename && ridename.user === user);
+
+        if (RidenameLocal === Ridename) {
+            return false
+        } else {
+            if (ridever) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+    } else {
+        return false;
+    }
+};
 
 function deleteRide(RidenameDelete) {
     //recuperamos el usuario logeado y por parametro el ridename a eliminar
