@@ -114,7 +114,6 @@ function cargarDashboard() {
     let ridesregis = JSON.parse(localStorage.getItem('rides'));
     let user = sessionStorage.getItem('user');
     if (!ridesregis) {
-        window.alert('No se encontro la información de los rides para mostar, por favor agregue un ride');
     } else {
         //acá creamos una referencia a la tabla donde vamos a insertar la información
         let tabladash = document.getElementById('dashboardinformation');
