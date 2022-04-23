@@ -138,7 +138,7 @@ function cargarDashboard() {
                 //acá creamos el bóton de editar y le asignamos el texto de editar
                 let editButton = document.createElement("button");
                 editButton.textContent = 'Editar';
-                //acá creamos el bóton de editar y le asignamos el texto eliminar
+                //acá creamos el bóton de eliminar y le asignamos el texto eliminar
                 let deleteButton = document.createElement("button");
                 deleteButton.textContent = 'Eliminar';
                 //acá agregamos los botones a la celda
@@ -147,6 +147,7 @@ function cargarDashboard() {
 
                 //acá le creamos un evento al boton de editar para poder ir a editar la informacion
                 editButton.addEventListener("click", (event) => {
+                    event.preventDefault();
                     //acá obtenemos la fila donde se le dio click al editar
                     let rideRow = event.target.parentNode.parentNode;
                     // acá obtenemos el nombre del ride de la fila seleccionada
@@ -158,6 +159,7 @@ function cargarDashboard() {
                 });
 
                 deleteButton.addEventListener("click", (event) => {
+                    event.preventDefault();
                     let resultado = window.confirm('¿Estas seguro que desea eliminar el ride?');
                     if (resultado === true) {
                         let rideRow = event.target.parentNode.parentNode;
