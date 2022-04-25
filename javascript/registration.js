@@ -33,6 +33,7 @@ function registration(){
                 //Una vez realizado el push registramos la información en el local storage y le abrimos
                 //la página de autentificación
                 localStorage.setItem("usersRegistred", JSON.stringify(userRegister));
+                window.alert('Usuario registrado con éxito');
                 window.location = "Authentication_Page.html";
             }else{
                 window.alert('Por favor verifique que las contraseñas sean iguales');
